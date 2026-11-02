@@ -1,0 +1,46 @@
+[package]
+name = "stitch"
+version = "0.3.0"
+edition = "2024"
+rust-version = "1.88"
+license = "MIT OR Apache-2.0"
+authors = ["Stitch Contributors", "GoldSrc Architecture Team"]
+repository = "https://github.com/stitch-rs/stitch"
+homepage = "https://github.com/stitch-rs"
+documentation = "https://docs.rs/stitch"
+readme = "README.md"
+description = "Unified facade, prelude, and meta-crate for the Stitch Systems Architecture ecosystem"
+keywords = ["stitch", "systems", "sma", "zero-copy", "no-std"]
+categories = ["rust-patterns", "network-programming", "data-structures"]
+
+[dependencies]
+# 1. Execution Kernel (SMA)
+stitch-core = { git = "https://github.com/stitch-rs/stitch-framework.git", branch = "dev", default-features = false, optional = true }
+stitch-macros = { git = "https://github.com/stitch-rs/stitch-framework.git", branch = "dev", optional = true }
+stitch-async = { git = "https://github.com/stitch-rs/stitch-framework.git", branch = "dev", default-features = false, optional = true }
+
+# 2. Data & Layout Engine
+stitch-data = { git = "https://github.com/stitch-rs/stitch-data.git", branch = "dev", default-features = false, optional = true }
+
+# 3. Transport & Wire Bus
+stitch-wire = { git = "https://github.com/stitch-rs/stitch-wire.git", branch = "dev", default-features = false, optional = true }
+
+[features]
+default = ["std", "framework", "data", "wire"]
+std = [
+    "stitch-core?/std",
+    "stitch-async?/std",
+    "stitch-data?/std",
+    "stitch-wire?/std",
+]
+alloc = [
+    "stitch-data?/alloc",
+    "stitch-wire?/alloc",
+]
+
+# Feature modules
+framework = ["dep:stitch-core", "dep:stitch-macros"]
+async = ["framework", "dep:stitch-async"]
+data = ["dep:stitch-data", "stitch-data/derive", "stitch-wire?/data"]
+wire = ["dep:stitch-wire"]
+full = ["default", "async"]
