@@ -13,6 +13,12 @@ description = "Unified facade, prelude, and meta-crate for the Stitch Systems Ar
 keywords = ["stitch", "systems", "sma", "zero-copy", "no-std"]
 categories = ["rust-patterns", "network-programming", "data-structures"]
 
+[workspace]
+members = [
+    ".",
+    "benches-ecosystem",
+]
+
 [dependencies]
 # 1. Execution Kernel (SMA)
 stitch-core = { git = "https://github.com/stitch-rs/stitch-framework.git", branch = "dev", default-features = false, optional = true }
