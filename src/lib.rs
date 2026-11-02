@@ -121,13 +121,14 @@ pub mod prelude {
     pub use crate::data::{
         // Transforms & Codecs
         BitPacker,
+        // Record traits & Codecs
+        ColumnCodec,
         ColumnarBlockBuilder,
         CompressionPipeline,
         DecompressionPipeline,
         DeltaTransformer,
         FieldCodec,
         GorillaCompressor,
-        // Record traits & Codecs
         Record,
         RecordBatchBuilder,
         RleTransformer,
