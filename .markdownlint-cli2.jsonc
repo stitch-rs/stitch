@@ -3,11 +3,13 @@
     "default": true,
     "MD013": false,
     "MD024": false,
+    "MD025": false,
     "MD033": false,
     "MD041": false
   },
   "ignores": [
     "target/**",
-    "**/target/**"
+    "**/target/**",
+    "**/book/book/**"
   ]
 }
