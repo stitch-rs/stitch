@@ -1,6 +1,7 @@
 # Stitch (`stitch`)
 
 [![CI](https://github.com/stitch-rs/stitch/actions/workflows/ci.yml/badge.svg)](https://github.com/stitch-rs/stitch/actions/workflows/ci.yml)
+[![Book](https://img.shields.io/badge/docs-mdBook-orange.svg)](https://stitch-rs.github.io/stitch/)
 [![Crates.io](https://img.shields.io/crates/v/stitch.svg)](https://crates.io/crates/stitch)
 [![Docs.rs](https://docs.rs/stitch/badge.svg)](https://docs.rs/stitch)
 [![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg)](LICENSE)
@@ -9,6 +10,17 @@
 > **The Unified Systems Architecture Ecosystem for High-Performance Rust.**
 
 `stitch` is the primary entry point and facade meta-crate for the Stitch ecosystem, seamlessly unifying execution pipelines, memory layout transformations, and wire transport into a zero-cost, mechanical-sympathy stack.
+
+---
+
+## Documentation
+
+📖 Read **[The Stitch Architecture Book](https://stitch-rs.github.io/stitch/)** for the complete technical reference:
+- **The Sewing Machine Architecture (SMA)**: Monomorphic U-cycle pipelines, static dispatch, and 64-byte L1D cache-line alignment.
+- **Network Wire Framing**: Zero-copy 28-byte headers, SWAR magic resynchronization, hardware Castagnoli CRC-32C, and Tokio/Std streaming.
+- **Columnar Data Compression**: SoA layout, Gorilla float delta-of-delta, SIMD RLE, dictionary encoding, and `SCHEMA_HASH` governance.
+- **Cross-Language Interoperability**: C-ABI library (`stitch_wire.h`) with panic-safe `catch_unwind` and WebAssembly linear memory exports.
+- **Production Domain Exemplars**: Complete architectural teardowns of the **HFT L2 OrderBook Gateway** and **128Hz Game State Synchronizer**.
 
 ---
 

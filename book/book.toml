@@ -1,0 +1,18 @@
+[book]
+title = "The Stitch Architecture Book"
+authors = ["Stitch Systems Team"]
+description = "High-Throughput Monomorphic Pipelines, Zero-Copy Framing & Columnar Encoding in Rust"
+language = "en"
+src = "src"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+git-repository-url = "https://github.com/stitch-rs/stitch"
+edit-url-template = "https://github.com/stitch-rs/stitch/edit/main/book/{path}"
+site-url = "/stitch/"
+default-theme = "rust"
+preferred-dark-theme = "navy"
+mathjax-support = false
