@@ -167,8 +167,13 @@ pub mod prelude {
         pack_frame,
         pack_frame_vectored,
         resync_frame,
+        // SPSC Lock-free Ring Buffer
+        ring::{CachePaddedAtomicUsize, SpscByteRing},
         unpack_frame,
     };
+
+    #[cfg(all(feature = "wire", feature = "std"))]
+    pub use crate::wire::udp::{UdpBatchReceiver, UdpBatchSender};
 
     // OptimizationProfile & Wire Adapters
     #[cfg(feature = "data")]
