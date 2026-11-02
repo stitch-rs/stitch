@@ -14,7 +14,7 @@ impl Blackboard for TelemetryBlackboard {}
 // Verify Scrooge 64-byte L1D cache-line alignment contract at compile-time
 assert_blackboard_aligned!(TelemetryBlackboard);
 
-#[derive(StitchRecord, Debug, PartialEq, Clone, Default)]
+#[derive(Record, Debug, PartialEq, Clone, Default)]
 struct SensorPayload {
     #[stitch(codec = "varint")]
     pub sensor_id: u32,

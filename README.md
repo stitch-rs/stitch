@@ -75,7 +75,7 @@ impl Blackboard for TelemetryContext {}
 assert_blackboard_aligned!(TelemetryContext);
 
 // 2. High-density data record with compile-time schema hash
-#[derive(StitchRecord, Debug, PartialEq, Clone, Default)]
+#[derive(Record, Debug, PartialEq, Clone, Default)]
 struct TelemetryEvent {
     #[stitch(codec = "varint")]
     pub node_id: u32,

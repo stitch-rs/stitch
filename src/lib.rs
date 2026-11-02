@@ -127,12 +127,12 @@ pub mod prelude {
         DeltaTransformer,
         FieldCodec,
         GorillaCompressor,
+        // Record traits & Codecs
+        Record,
         RecordBatchBuilder,
         RleTransformer,
         // Error
         StitchError,
-        // Record traits & Codecs
-        StitchRecord,
         // BitStream & Bit IO
         bitstream::{BitReader, BitWriter},
         // Varint & ZigZag
@@ -185,5 +185,5 @@ pub mod prelude {
 
     // Macro derive re-export
     #[cfg(feature = "data")]
-    pub use stitch_data::StitchRecord as DeriveStitchRecord;
+    pub use stitch_data::Record as DeriveRecord;
 }

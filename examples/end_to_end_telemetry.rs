@@ -3,7 +3,7 @@
 //! Demonstrates:
 //! 1. Memory scratchpad aligned to 64-byte L1D cache-line boundary ([`Blackboard`]).
 //! 2. Zero-cost monomorphic U-cycle execution pipeline ([`Pipeline`]).
-//! 3. Zero-allocation data encoding with compile-time schema hashing ([`StitchRecord`]).
+//! 3. Zero-allocation data encoding with compile-time schema hashing ([`Record`]).
 //! 4. Physical transport framing with hardware Castagnoli CRC32 ([`WireHeader`], [`pack_record`]).
 
 use stitch::prelude::*;
@@ -19,7 +19,7 @@ impl Blackboard for TelemetryContext {}
 
 assert_blackboard_aligned!(TelemetryContext);
 
-#[derive(StitchRecord, Debug, PartialEq, Clone, Default)]
+#[derive(Record, Debug, PartialEq, Clone, Default)]
 struct TelemetryEvent {
     #[stitch(codec = "varint")]
     pub node_id: u32,
