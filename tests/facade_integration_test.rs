@@ -95,11 +95,7 @@ fn test_end_to_end_sma_data_and_wire_pipeline() {
     // 4. Low-Level Verification: Wrap in Wire Transport Frame with Hardware Castagnoli CRC32
     let wire_header = WireHeader {
         profile: WireOptimizationProfile::Balanced,
-        flags: WireFlags {
-            is_compressed: true,
-            is_chunked: false,
-            has_schema_hash: true,
-        },
+        flags: WireFlags::new(true, false, true),
         payload_len: encoded_len,
         schema_hash: Some(SensorPayload::SCHEMA_HASH),
     };
@@ -151,11 +147,7 @@ fn test_end_to_end_sma_data_and_wire_pipeline() {
 fn test_wire_resync_recovery() {
     let wire_header = WireHeader {
         profile: WireOptimizationProfile::Direct,
-        flags: WireFlags {
-            is_compressed: false,
-            is_chunked: false,
-            has_schema_hash: true,
-        },
+        flags: WireFlags::new(false, false, true),
         payload_len: 4,
         schema_hash: Some(0x1234_5678),
     };

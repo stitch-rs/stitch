@@ -78,11 +78,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         // 2. Wire transport framing
         let header = WireHeader {
             profile: WireOptimizationProfile::Realtime,
-            flags: WireFlags {
-                is_compressed: true,
-                is_chunked: false,
-                has_schema_hash: true,
-            },
+            flags: WireFlags::new(true, false, true),
             payload_len,
             schema_hash: Some(EntityKinematics::SCHEMA_HASH),
         };

@@ -191,11 +191,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Wire Transport Framing
     let wire_header = WireHeader {
         profile: WireOptimizationProfile::Balanced,
-        flags: WireFlags {
-            is_compressed: true,
-            is_chunked: false,
-            has_schema_hash: true,
-        },
+        flags: WireFlags::new(true, false, true),
         payload_len: compressed_len,
         schema_hash: Some(MarketDepthUpdate::SCHEMA_HASH),
     };
