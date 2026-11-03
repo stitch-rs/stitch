@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "rust";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-8dd7fb3a.js";
+            window.path_to_searchindex_js = "searchindex-cb404309.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dd8b43d1.js"></script>
@@ -227,6 +227,14 @@ let pipeline = Pipeline::new()
 <h2 id="4-speculative-complexity--yagni"><a class="header" href="#4-speculative-complexity--yagni">4. Speculative Complexity &amp; YAGNI</a></h2>
 <p>Never introduce complex, unproven data structures (like Eytzinger BFS arrays, succinct Elias-Fano, or multi-level radix trees) based solely on synthetic microbenchmarks.</p>
 <p>Real production workloads are dominated by cache pollution, kernel boundaries, and memory bandwidth. If 20 lines of idiomatic, cache-aligned Rust or linear SWAR scanning outperforms a complex theoretical structure, choose simplicity. Always measure end-to-end latency with statistical rigor.</p>
+<hr>
+<h2 id="5-type-safe-macro-contracts-anti-stringly-typed-systems-law"><a class="header" href="#5-type-safe-macro-contracts-anti-stringly-typed-systems-law">5. Type-Safe Macro Contracts (Anti-Stringly-Typed Systems Law)</a></h2>
+<p>Procedural macros must never rely on string literals (<code>"varint"</code>, <code>"zigzag"</code>, <code>"balanced"</code>) to configure system behavior, codecs, or policies:</p>
+<ol>
+<li><strong>No Stringly-Typed Traps</strong>: String literals bypass compiler type checks, prevent symbol renaming, and degrade IDE autocompletion (<code>rust-analyzer</code>).</li>
+<li><strong>First-Class Enums and Paths</strong>: All variants must be typed Rust symbols: <code>#[stitch(codec = FieldCodec::Varint)]</code> or shorthand <code>#[stitch(varint)]</code>.</li>
+<li><strong>Fail-Fast Compile Diagnostics</strong>: Supplying a string literal in macro attributes must immediately halt compilation with an explicit error explaining the type-safe replacement.</li>
+</ol>
 
                     </main>
 
