@@ -169,3 +169,32 @@ fn test_wire_resync_recovery() {
     assert_eq!(frame.header.schema_hash, Some(0x1234_5678));
     assert_eq!(frame.payload, &payload);
 }
+
+#[pipeline(
+    context = TelemetryBlackboard,
+    intent = SensorPayload,
+    outcome = SensorPayload,
+    error = &'static str,
+    layers = [ValidationLayer],
+    terminal = EgressTerminal,
+    crate = stitch::core,
+)]
+struct SensorPipeline;
+
+#[test]
+fn test_attribute_newtype_pipeline_in_facade() {
+    let mut ctx = TelemetryBlackboard::default();
+    let mut pipe = SensorPipeline::new(ValidationLayer, EgressTerminal);
+
+    let input = SensorPayload {
+        sensor_id: 101,
+        temperature_milli_c: -500,
+        pressure_hpa: 1013,
+    };
+    let output = pipe
+        .run_cycle(&mut ctx, input.clone())
+        .expect("Traversal must succeed");
+    assert_eq!(output, input);
+    assert_eq!(ctx.processed_count, 1);
+    assert_eq!(ctx.last_sensor_id, 101);
+}

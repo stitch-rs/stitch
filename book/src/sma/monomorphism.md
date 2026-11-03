@@ -48,3 +48,30 @@ Because there are no trait objects or vtables:
 2. If a layer's `on_exit` method is empty (the default no-op implementation), LLVM completely removes the function call and branch during dead-code elimination.
 3. Intermediate registers are preserved across layer boundaries instead of being spilled to the stack to comply with standard C calling conventions.
 4. Hot loops processing thousands of packets achieve performance identical to hand-written, monolithic assembly code.
+
+---
+
+## 3. The Canonical DX Standard: `#[pipeline(...)]` Newtype Attribute
+
+To eliminate complex nested type declarations and DSL macro friction, Stitch provides the canonical `#[pipeline(...)]` attribute macro:
+
+```rust
+use stitch::prelude::*;
+
+#[pipeline(
+    context = TelemetryBlackboard,
+    intent = SensorPayload,
+    outcome = SensorPayload,
+    error = &'static str,
+    layers = [RateLimitLayer, AuthValidationLayer, ChecksumLayer],
+    terminal = TerminalCore,
+)]
+pub struct SensorPipeline;
+```
+
+### Architectural Guarantees
+
+1. **Natural Forward Ordering**: Layers in `layers = [A, B, C]` are listed in top-down descent order ($A \to B \to C \to \text{Terminal}$).
+2. **`#[repr(transparent)]` Tuple Struct**: The macro expands into a concrete newtype struct wrapping `Pipeline<...>` with zero memory overhead.
+3. **Ergonomic Construction**: Automatically generates `SensorPipeline::new(...)` taking each layer and terminal as typed arguments.
+4. **IDE & Tooling Support**: Unlike procedural function-like macros, the pipeline is a first-class named struct indexed by `rust-analyzer` and documented cleanly in `rustdoc`.

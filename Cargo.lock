@@ -504,7 +504,7 @@ dependencies = [
 [[package]]
 name = "stitch-async"
 version = "0.3.0"
-source = "git+https://github.com/stitch-rs/stitch-framework.git?branch=dev#dfba8f5f32bffedeb565913998704b8decac47e6"
+source = "git+https://github.com/stitch-rs/stitch-framework.git?branch=dev#1415fda9a651b78d55c24f338a6c6508583a028a"
 dependencies = [
  "stitch-core 0.3.0 (git+https://github.com/stitch-rs/stitch-framework.git?branch=dev)",
 ]
@@ -525,17 +525,17 @@ dependencies = [
 [[package]]
 name = "stitch-core"
 version = "0.3.0"
-source = "git+https://github.com/stitch-rs/stitch-framework.git?branch=dev#dfba8f5f32bffedeb565913998704b8decac47e6"
+source = "git+https://github.com/stitch-rs/stitch-framework.git?branch=dev#1415fda9a651b78d55c24f338a6c6508583a028a"
 
 [[package]]
 name = "stitch-core"
 version = "0.3.0"
-source = "git+https://github.com/stitch-rs/stitch-framework.git?branch=main#dfba8f5f32bffedeb565913998704b8decac47e6"
+source = "git+https://github.com/stitch-rs/stitch-framework.git?branch=main#1415fda9a651b78d55c24f338a6c6508583a028a"
 
 [[package]]
 name = "stitch-data"
 version = "0.1.0"
-source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#971a2186d29cef5d973df49831edafe66325ddab"
+source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#b84aca13f13a850a112654e4613ee289481daf4c"
 dependencies = [
  "stitch-data-core",
  "stitch-data-derive",
@@ -545,12 +545,12 @@ dependencies = [
 [[package]]
 name = "stitch-data-core"
 version = "0.1.0"
-source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#971a2186d29cef5d973df49831edafe66325ddab"
+source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#b84aca13f13a850a112654e4613ee289481daf4c"
 
 [[package]]
 name = "stitch-data-derive"
 version = "0.1.0"
-source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#971a2186d29cef5d973df49831edafe66325ddab"
+source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#b84aca13f13a850a112654e4613ee289481daf4c"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -560,7 +560,7 @@ dependencies = [
 [[package]]
 name = "stitch-data-transforms"
 version = "0.1.0"
-source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#971a2186d29cef5d973df49831edafe66325ddab"
+source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#b84aca13f13a850a112654e4613ee289481daf4c"
 dependencies = [
  "stitch-core 0.3.0 (git+https://github.com/stitch-rs/stitch-framework.git?branch=main)",
  "stitch-data-core",
@@ -569,7 +569,7 @@ dependencies = [
 [[package]]
 name = "stitch-macros"
 version = "0.3.0"
-source = "git+https://github.com/stitch-rs/stitch-framework.git?branch=dev#dfba8f5f32bffedeb565913998704b8decac47e6"
+source = "git+https://github.com/stitch-rs/stitch-framework.git?branch=dev#1415fda9a651b78d55c24f338a6c6508583a028a"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -579,7 +579,7 @@ dependencies = [
 [[package]]
 name = "stitch-wire"
 version = "0.1.0"
-source = "git+https://github.com/stitch-rs/stitch-wire.git?branch=dev#bf776ce74facb1ab1f1cd9ffe98ebc2f8d365865"
+source = "git+https://github.com/stitch-rs/stitch-wire.git?branch=dev#81ee0d24d84b645ad8669317e205aded35947fff"
 dependencies = [
  "stitch-core 0.3.0 (git+https://github.com/stitch-rs/stitch-framework.git?branch=dev)",
  "stitch-data",
@@ -589,7 +589,7 @@ dependencies = [
 [[package]]
 name = "stitch-wire-core"
 version = "0.1.0"
-source = "git+https://github.com/stitch-rs/stitch-wire.git?branch=dev#bf776ce74facb1ab1f1cd9ffe98ebc2f8d365865"
+source = "git+https://github.com/stitch-rs/stitch-wire.git?branch=dev#81ee0d24d84b645ad8669317e205aded35947fff"
 
 [[package]]
 name = "syn"

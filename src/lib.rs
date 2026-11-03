@@ -110,10 +110,12 @@ pub mod prelude {
         fnv1a_64,
         id,
         layer,
+        pipeline,
         query,
         terminal,
         token,
         value_object,
+        wire_pipeline,
     };
 
     // 2. Data & Layout Engine
