@@ -59,3 +59,13 @@ In Stitch:
 Never introduce complex, unproven data structures (like Eytzinger BFS arrays, succinct Elias-Fano, or multi-level radix trees) based solely on synthetic microbenchmarks.
 
 Real production workloads are dominated by cache pollution, kernel boundaries, and memory bandwidth. If 20 lines of idiomatic, cache-aligned Rust or linear SWAR scanning outperforms a complex theoretical structure, choose simplicity. Always measure end-to-end latency with statistical rigor.
+
+---
+
+## 5. Type-Safe Macro Contracts (Anti-Stringly-Typed Systems Law)
+
+Procedural macros must never rely on string literals (`"varint"`, `"zigzag"`, `"balanced"`) to configure system behavior, codecs, or policies:
+
+1. **No Stringly-Typed Traps**: String literals bypass compiler type checks, prevent symbol renaming, and degrade IDE autocompletion (`rust-analyzer`).
+2. **First-Class Enums and Paths**: All variants must be typed Rust symbols: `#[stitch(codec = FieldCodec::Varint)]` or shorthand `#[stitch(varint)]`.
+3. **Fail-Fast Compile Diagnostics**: Supplying a string literal in macro attributes must immediately halt compilation with an explicit error explaining the type-safe replacement.
