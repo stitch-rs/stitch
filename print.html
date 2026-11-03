@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "rust";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-c9053257.js";
+            window.path_to_searchindex_js = "searchindex-8dd7fb3a.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dd8b43d1.js"></script>
@@ -361,6 +361,30 @@ pub struct LayerNil;
 <li>If a layer’s <code>on_exit</code> method is empty (the default no-op implementation), LLVM completely removes the function call and branch during dead-code elimination.</li>
 <li>Intermediate registers are preserved across layer boundaries instead of being spilled to the stack to comply with standard C calling conventions.</li>
 <li>Hot loops processing thousands of packets achieve performance identical to hand-written, monolithic assembly code.</li>
+</ol>
+<hr>
+<h2 id="3-the-canonical-dx-standard-pipeline-newtype-attribute"><a class="header" href="#3-the-canonical-dx-standard-pipeline-newtype-attribute">3. The Canonical DX Standard: <code>#[pipeline(...)]</code> Newtype Attribute</a></h2>
+<p>To eliminate complex nested type declarations and DSL macro friction, Stitch provides the canonical <code>#[pipeline(...)]</code> attribute macro:</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use stitch::prelude::*;
+
+#[pipeline(
+    context = TelemetryBlackboard,
+    intent = SensorPayload,
+    outcome = SensorPayload,
+    error = &amp;'static str,
+    layers = [RateLimitLayer, AuthValidationLayer, ChecksumLayer],
+    terminal = TerminalCore,
+)]
+pub struct SensorPipeline;
+<span class="boring">}</span></code></pre>
+<h3 id="architectural-guarantees"><a class="header" href="#architectural-guarantees">Architectural Guarantees</a></h3>
+<ol>
+<li><strong>Natural Forward Ordering</strong>: Layers in <code>layers = [A, B, C]</code> are listed in top-down descent order ($A \to B \to C \to \text{Terminal}$).</li>
+<li><strong><code>#[repr(transparent)]</code> Tuple Struct</strong>: The macro expands into a concrete newtype struct wrapping <code>Pipeline&lt;...&gt;</code> with zero memory overhead.</li>
+<li><strong>Ergonomic Construction</strong>: Automatically generates <code>SensorPipeline::new(...)</code> taking each layer and terminal as typed arguments.</li>
+<li><strong>IDE &amp; Tooling Support</strong>: Unlike procedural function-like macros, the pipeline is a first-class named struct indexed by <code>rust-analyzer</code> and documented cleanly in <code>rustdoc</code>.</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="zero-allocation-flow-control--blackboards"><a class="header" href="#zero-allocation-flow-control--blackboards">Zero-Allocation Flow Control &amp; Blackboards</a></h1>
