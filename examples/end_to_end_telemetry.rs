@@ -21,11 +21,11 @@ assert_blackboard_aligned!(TelemetryContext);
 
 #[derive(Record, Debug, PartialEq, Clone, Default)]
 struct TelemetryEvent {
-    #[stitch(codec = "varint")]
+    #[stitch(codec = Varint)]
     pub node_id: u32,
-    #[stitch(codec = "zigzag")]
+    #[stitch(codec = ZigZag)]
     pub temperature_delta_c: i32,
-    #[stitch(codec = "varint")]
+    #[stitch(codec = Varint)]
     pub rpm: u32,
 }
 

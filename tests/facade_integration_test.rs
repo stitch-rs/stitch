@@ -16,11 +16,11 @@ assert_blackboard_aligned!(TelemetryBlackboard);
 
 #[derive(Record, Debug, PartialEq, Clone, Default)]
 struct SensorPayload {
-    #[stitch(codec = "varint")]
+    #[stitch(codec = Varint)]
     pub sensor_id: u32,
-    #[stitch(codec = "zigzag")]
+    #[stitch(codec = ZigZag)]
     pub temperature_milli_c: i32,
-    #[stitch(codec = "varint")]
+    #[stitch(codec = Varint)]
     pub pressure_hpa: u32,
 }
 

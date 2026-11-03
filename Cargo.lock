@@ -535,7 +535,7 @@ source = "git+https://github.com/stitch-rs/stitch-framework.git?branch=main#1415
 [[package]]
 name = "stitch-data"
 version = "0.1.0"
-source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#b84aca13f13a850a112654e4613ee289481daf4c"
+source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#502eac2fe9628bf6528b87c4f26cde44d8cfe9a6"
 dependencies = [
  "stitch-data-core",
  "stitch-data-derive",
@@ -545,12 +545,12 @@ dependencies = [
 [[package]]
 name = "stitch-data-core"
 version = "0.1.0"
-source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#b84aca13f13a850a112654e4613ee289481daf4c"
+source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#502eac2fe9628bf6528b87c4f26cde44d8cfe9a6"
 
 [[package]]
 name = "stitch-data-derive"
 version = "0.1.0"
-source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#b84aca13f13a850a112654e4613ee289481daf4c"
+source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#502eac2fe9628bf6528b87c4f26cde44d8cfe9a6"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -560,7 +560,7 @@ dependencies = [
 [[package]]
 name = "stitch-data-transforms"
 version = "0.1.0"
-source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#b84aca13f13a850a112654e4613ee289481daf4c"
+source = "git+https://github.com/stitch-rs/stitch-data.git?branch=dev#502eac2fe9628bf6528b87c4f26cde44d8cfe9a6"
 dependencies = [
  "stitch-core 0.3.0 (git+https://github.com/stitch-rs/stitch-framework.git?branch=main)",
  "stitch-data-core",
