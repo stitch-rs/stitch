@@ -16,6 +16,7 @@
 ## Documentation
 
 📖 Read **[The Stitch Architecture Book](https://stitch-rs.github.io/stitch/)** for the complete technical reference:
+
 - **The Sewing Machine Architecture (SMA)**: Monomorphic U-cycle pipelines, static dispatch, and 64-byte L1D cache-line alignment.
 - **Network Wire Framing**: Zero-copy 28-byte headers, SWAR magic resynchronization, hardware Castagnoli CRC-32C, and Tokio/Std streaming.
 - **Columnar Data Compression**: SoA layout, Gorilla float delta-of-delta, SIMD RLE, dictionary encoding, and `SCHEMA_HASH` governance.

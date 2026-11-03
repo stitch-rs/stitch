@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3.0] - 2026-11-03
 
 ### Added
+
 - **Unified Prelude**: Single-import access to execution kernel, data engine, and wire framing.
 - **End-to-End Exemplars**:
   - `hft_orderbook_gateway.rs`: Sub-microsecond market data framing and delta decoding.
@@ -18,5 +19,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Ecosystem mdBook**: Complete documentation suite covering SMA design axioms, data layout, wire framing, and mechanical sympathy.
 
 ### Changed
+
 - Integrated composable SMA wire framing pipeline (`WireBlackboard`, `WirePresets`).
 - Updated all domain exemplars to canonical `WireFlags::new`.

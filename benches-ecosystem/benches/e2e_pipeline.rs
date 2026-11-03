@@ -25,20 +25,16 @@ fn bench_e2e_pipeline(c: &mut Criterion) {
 
             let wire_header = WireHeader {
                 profile: WireOptimizationProfile::Balanced,
-                flags: WireFlags {
-                    is_compressed: true,
-                    is_chunked: false,
-                    has_schema_hash: false,
-                },
+                flags: WireFlags::new(true, false, false),
                 payload_len,
                 schema_hash: None,
             };
 
-            // 2. Wire framing
+            // 2. Wire framing with black_box wrapping
             let frame_len = pack_frame(
-                &wire_header,
-                &columnar_batch_buf[..payload_len],
-                &mut framed_wire_buf,
+                criterion::black_box(&wire_header),
+                criterion::black_box(&columnar_batch_buf[..payload_len]),
+                criterion::black_box(&mut framed_wire_buf),
             )
             .expect("pack frame");
 

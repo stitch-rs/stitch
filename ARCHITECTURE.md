@@ -56,6 +56,7 @@
 ## 3. The Scrooge Systems Mindset Axioms
 
 Every component exposed through `stitch::prelude` complies with:
+
 - **Zero Dynamic Allocation**: Scratchpad buffers and stack arrays only.
 - **Cache-Line Alignment**: Contexts and state machines align to 64 bytes (`#[repr(C, align(64))]`).
 - **Monomorphic Dispatch**: Zero `Box<dyn ...>` in hot paths.

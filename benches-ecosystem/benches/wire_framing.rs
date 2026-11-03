@@ -4,16 +4,13 @@ use stitch::prelude::*;
 fn bench_wire_packing(c: &mut Criterion) {
     let mut group = c.benchmark_group("wire_framing");
 
-    let payload = vec![0xABu8; 1024]; // 1 KB payload
+    // Realistic byte stream with entropy rather than a single repeating byte
+    let payload: Vec<u8> = (0..1024).map(|i| (i * 37 + 13) as u8).collect();
     let mut out_buffer = vec![0u8; 2048];
 
     let wire_header = WireHeader {
         profile: WireOptimizationProfile::Balanced,
-        flags: WireFlags {
-            is_compressed: true,
-            is_chunked: false,
-            has_schema_hash: false,
-        },
+        flags: WireFlags::new(true, false, false),
         payload_len: payload.len(),
         schema_hash: None,
     };
